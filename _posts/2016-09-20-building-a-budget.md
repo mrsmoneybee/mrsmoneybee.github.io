@@ -1,7 +1,9 @@
+---
 title:  "Building a Budget"
 date:   2016-09-20 
 image:
   feature: gatsby.jpg
+---
 #Building a Budget
 What I would consider to be the most important part of being financially wise would be building a budget. <!--more--> I know what you’re thinking, “ugh, another person telling me to budget. Enough already!” But it’s so true. It is so important to have an understanding of how much you are spending versus how much you are bringing home. Ideally, you would be spending less than you are bringing home. To build a very basic budget you can use mint.com or any number of similar sites. Our family uses mint.com and it is a great site to use to break down where your money goes.
 
