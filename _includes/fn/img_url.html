@@ -1,0 +1,8 @@
+{% if include.url contains 'https://' or 
+      include.url contains 'http://' %}
+
+  {{ include.url }}
+{% else %}
+
+  {{ "/images/" | append: include.url | prepend: site.baseurl }}
+{% endif %}

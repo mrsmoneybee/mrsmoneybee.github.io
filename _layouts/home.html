@@ -1,0 +1,28 @@
+---
+layout: base
+---
+
+<div class="featured-image home-header"></div>
+
+<section class="archive">
+  <ol class="post-list">
+    {% for post in site.posts %}
+      <li>
+        {% if post.image.feature %}
+          <img src="{% include fn/img_url.html url=post.image.feature %}" />
+        {% endif %}
+
+        <div class="post-detail">
+          <h2><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
+          <p class="date"><time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%B %d, %Y" }}</time></p>
+          <p>{% if post.description %}
+            {{ post.description  | strip_html }}
+          {% else %}
+            {{ post.excerpt | strip_html }}
+          {% endif %} ... </p>
+          <a class="read-more" href="{{ post.url | prepend: site.baseurl }}">Read More</a>
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+</section>

@@ -14,20 +14,38 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Mrs. Money Bee
-email: themrsmoneybee@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
+tagline: tagline
+description: > # this means to ignore newlines until next
   Mrs. Money Bee
+url: "https://mrsmoneybee.github.io" # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://mrsmoneybee.github.io" # the base hostname & protocol for your site
-twitter_username: themrsmoneybee
-#github_username: mrsmoneybee
+
+owner:
+  name: Mrs. Money Bee
+  avatar: avatar.png
+  email: themrsmoneybee@gmail.com
+  twitter: themrsmoneybee
+  disqus: mrsmoneybee
+
+# Links to include in top nav
+# External add "external: true"
+links:
+  - title: About
+    url: /about
+  # - title: Github
+  #   url: https://github.com/ColeTownsend/Balzac-for-Jekyll
+  #   external: true
+  # - title: Cole Who?
+  #   url: http://coletownsend.com
+  #   external: true
 
 # Global settings
+opengraph:
+  locale: en_US
 timezone: America/New_York
 
 # Build settings
 markdown: kramdown
-theme: minima
 
 kramdown:
   input: GFM
@@ -36,9 +54,14 @@ kramdown:
 defaults:
   -
     scope:
-      path: "_posts"
+      path: ""
+      type: "posts"
     values:
       layout: "post"
+
+# https://github.com/mojombo/jekyll/wiki/Permalinks
+permalink: /:year/:month/:day/:title.html
+excerpt_separator: <!--more-->
 
 gems:
 - jemoji

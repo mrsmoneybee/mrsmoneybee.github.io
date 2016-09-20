@@ -1,0 +1,25 @@
+<footer class="site-footer">
+  <aside class="wrap">
+    <section class="prev-posts">
+      <h2>Recent Posts</h2>
+      <ol>
+        {% for post in site.posts | limit:3 %}
+          <li>
+            <span class="recent-title"><a href="{{ post.url | prepend: site.baseurl }}" title="{{ post.title }}">{{ post.title | strip_html | strip_newlines | truncate: 30 }} </a></span>
+            <span class="date">{{post.date | date: "%b %d, %Y" }}</span>
+          </li>
+        {% endfor %}
+      </ol>
+    </section>
+    <div class="social">
+      <ul>
+          <li><a id="mail" href="mailto:{{ site.owner.email }}"><span class="foot-link">Contact Me</span></a></li>
+
+          {% if site.owner.twitter %}
+          <li><a id="twit" href="http://twitter.com/{{ site.owner.twitter }}" target="_blank"><span class="foot-link">@{{ site.owner.twitter }}</span></a></li>
+          {% endif %}
+      </ul>
+    </div>
+  </aside>
+  <small>&copy; {{ site.time | date: '%Y' }} {{ site.owner.name }}</small>
+</footer>

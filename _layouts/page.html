@@ -1,0 +1,11 @@
+---
+layout: base
+---
+
+{% if page.image.feature %}
+  <div class="featured-image" style="background-image: url({% include fn/img_url.html url=page.image.feature %})"></div>
+{% else %}
+  <div class="blank-space"></div>
+{% endif %}
+
+{{content}}

@@ -1,0 +1,25 @@
+<header class="site-header">
+  <div class="wrap">
+    <h1><a href="/">{{ site.title }}</a></h1>
+    <a class="menu"><span class="icons">☰</span></a>
+    <nav role="navigation">
+      <ul>
+        <li>
+          <a href="/" title="{{ site.title }}">Home</a>
+        </li>
+        
+        {% for link in site.links %}
+            <li>
+            {% if link.external %}
+              <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">
+            {% else %}
+              <a href="{{ link.url | prepend: site.baseurl }}">
+            {% endif %}
+                {{ link.title }}
+              </a>
+            </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

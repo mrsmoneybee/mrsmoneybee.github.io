@@ -1,0 +1,364 @@
+---
+---
+@charset "UTF-8";
+
+@import "normalize";
+@import "mixins";
+@import "grid";
+
+/* ==========================================================================
+   VARIABLES
+   ========================================================================== */
+
+/* Colors
+   ========================================================================== */
+
+$black:  #111;
+
+$grey-dark:   #333;
+$grey-medium: #999;
+$grey-light:  #d9d9d9;
+
+$white: #fff;
+
+/* Accent Colors */
+$brand: #9BCC9E;
+$secondary: #7A9EA0;
+$accent: #3F507C;
+
+$link: #00f;
+
+/* Typography
+   ========================================================================== */
+
+$serif: Palatino, 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', Georgia, serif;
+$sans: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$monospace: "Monaco", "Courier New", "Courier";
+
+/* Type Scale
+   ========================================================================== */
+// Root size 16px in most browsers
+
+$fsheader: 1.125rem; // 18px;
+$fscopywrite: 0.75rem; // 12px;
+
+/* Style Tidbits
+   ========================================================================== */
+
+$img_height: 30vh;
+
+/* Break Points
+   ========================================================================== */
+
+$breakpoints: (
+  S: (
+    min_width: null,
+  ),
+  M: (
+    min_width: 44em,
+  ),
+  L: (
+    min_width: 80em,
+  ),
+  XL: (
+    min_width: 120em,
+  ),
+);
+
+@function breakpoint($size, $prop: min_width){
+  @return map-get(map-get($breakpoints, $size), $prop);
+}
+
+// Use media queries like this:
+// @include media-query($on-palm) {
+//     .wrapper {
+//         padding-right: $spacing-unit / 2;
+//         padding-left: $spacing-unit / 2;
+//     }
+// }
+@mixin media-query($size) {
+  $min_width: breakpoint($size, min_width);
+  
+  @if $min_width {
+    @media screen and (min-width: breakpoint($size, min_width)) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+/* Typography
+   ========================================================================== */
+
+@import "type";
+
+/************ Layout *************/
+
+html, body { height: 100%; }
+
+body {
+  overflow-x: hidden;
+}
+
+.wrap {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+}
+
+%wrap-text {
+  margin: 0 auto;
+  max-width: 46em;
+
+  padding: 2rem .5rem;
+
+  @include media-query(M){
+    padding: 2rem 3rem;
+  }
+}
+
+.site-header {
+  padding: .5em 0;
+  position: fixed;
+  width: 100%;
+  z-index: 9000;
+  background: transparentize($black, .5);
+
+  vertical-align: bottom;
+  font-family: $sans;
+  font-size: $fsheader;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $white;
+  @include tshd(0, 0, 3px, rgba(0,0,0,.6));
+
+  a {
+    color: inherit;
+  }
+  a:hover, a:active {
+    @include tshd(0, 0, 3px, rgba(255,255,255,.6));
+  }
+
+  h1 {
+    float: left;
+  }
+
+  nav {
+    overflow-y: hidden;
+    max-height: 0;
+    @include transit(max-height,.4s,ease);
+
+    &.toggled {
+      max-height: 5em;
+    }
+
+    width: 100%;
+    font-size: 1rem;
+
+    ul li {
+      padding-top: 10px;
+      display: block;
+      text-align: right;
+    }
+
+    @include media-query(M) {
+      max-height: none;
+      float: right;
+      width: auto;
+
+      ul li {
+        display: inline-block;
+        line-height: $fsheader;
+        padding: 0 0 0 10px;
+      }
+    }
+  }
+
+  a.menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    @include media-query(M){
+      & {
+        display: none;
+      }
+    }
+  }
+}
+
+.page-content {
+  &:before {
+    display: block;
+    content: "";
+    height: $fsheader * 2;
+    background: $black;
+  }
+
+  & > .blank-space {
+    height: 2rem;
+  }
+
+  & > .featured-image {
+    height: $img_height;
+    vertical-align: middle;
+    background-position: center center;
+    background-size: cover;
+    box-shadow: 0 0 20px $black;
+
+    @include media-query(M){
+      & {
+        height: 47vh;
+      }
+    }
+  }
+}
+
+@include media-query(M){
+  .featured-image + .post {
+    margin-top: (-47vh/3);
+  }
+}
+
+article.post {
+  @extend %typography;
+  @extend %wrap-text;
+  background: $white;
+
+  & > header {
+    text-align: center;
+  }
+
+  .share {
+    @extend %h5;
+    display: inline-block;
+    @include centerh();
+
+    text-transform: uppercase;
+    padding: 4px 6px;
+    color: $grey-light;
+    border: 2px solid transparentize($grey-light,.3);
+    border-radius: 4px;
+    @include transit(all,.2s,ease);
+    &:hover {
+      color: $secondary;
+      border-color: transparentize($accent,.3);
+    }
+  }
+}
+
+.site-footer {
+  position: relative;
+  background: $black;
+  color: $white;
+  padding: 3em 0;
+
+  // a, a:visited { @extend %a; }
+  // a:visited { @extend %a_visited; }
+  // a:hover, a:active { @extend %a_hover; }
+
+  small {
+    position: absolute;
+    display: block;
+    width: 100%;
+    bottom: 8px;
+    text-align: center;
+    font-size: $fscopywrite;
+    font-family: $sans;
+    text-transform: uppercase;
+    color: transparentize($white, .8);
+  }
+}
+
+/************ Components *************/
+
+// Home Page
+.home-header {
+  //background-color: $brand;
+  background-image: url(/images/header.jpg);
+}
+.post-list {
+  @extend %wrap-text;
+  li+li { margin-top: 2em; }
+
+  h2 a { color: $accent; }
+  h2 a:hover { color: $secondary; }
+
+  li {
+    list-style-type: none;
+    border: 1px solid $grey-medium;
+    border-top: 7px solid $brand;
+    box-shadow: 3px 3px 3px transparentize($grey-medium, .5);
+
+    .post-detail {
+      @extend %wrap-text;
+      @extend %typography;
+      @include clearfix();
+
+      .read-more {
+        display: block;
+        float: right;
+      }
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+// Footer
+.prev-posts {
+  *+* { margin-top: .5rem; }
+  *+span{ margin-top: 0; }
+
+  a {
+    color: $white;
+  }
+
+  a:hover {
+    color: $accent;
+  }
+
+  h2 {
+    @extend %h4;
+    border-bottom: 2px solid $brand;
+    font-style: italic;
+  }
+
+  li {
+    list-style-type: none;
+
+    .recent-title {
+      @extend %h5;
+      font-style: italic;
+    }
+
+    .date {
+      @extend %h6;
+      float: right;
+      position: relative;
+      font-family: $sans;
+      text-align: right;
+    }
+  }
+}
+
+.social {
+  display: none;
+  font-style: italic;
+  a {
+    &:hover {
+      color: $white;
+    }
+  }
+  ul {
+    li {
+      // @extend %vertical_rhythm;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

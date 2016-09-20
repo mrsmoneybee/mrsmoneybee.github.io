@@ -1,0 +1,23 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% if page.title %}{{ page.title }} &#8211; {% endif %}{{ site.title }}</title>
+
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="keywords" content="{{ page.tags | join: ', ' }}">
+
+  <link rel="canonical" href="{% include fn/canonical.html %}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+
+  {% include opengraph.html %}
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <!-- <link rel="stylesheet" href="{{ "/assets/css/entypo.css" | prepend: site.baseurl }}" media="all"> -->
+  <link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}">
+
+  <!-- <script src="{{ "/assets/js/vendor/modernizr-2.8.3.min.js" | prepend: site.baseurl }}"></script> -->
+</head>
