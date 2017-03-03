@@ -1,4 +1,11 @@
-I thought I'd share just a few ideas I have that can save you some money without making drastic lifestyle changes.
+---
+title:  "Money Saving Tips"
+date:   2017-03-03 
+image:
+  feature: gatsby.jpg
+---
+
+I thought I'd share just a few ideas I have that can save you some money without making drastic lifestyle changes. <!--more-->
 ------
 # Learn to cook at home. 
 Eating out is expensive. My husband told me about a fifteen dollar hamburger he ordered the other day! I could make that for $5 or less! I will admit it is fun to go out and not have to worry about cooking AND cleaning the MOUNTAIN of dishes. I’ve started cooking a lot more often and honestly, I can’t even think of somewhere I would want to go eat. I was feeling incredibly lazy just the other day and told my husband I wanted to go out but then I started thinking, where? I could not think of a single place that served something I truly wanted to eat. Luckily we had plenty of leftovers from meals I had cooked previously in the week. It can also save you money on lunches. My husband takes leftovers to work most days, other than the $15 hamburger day.
